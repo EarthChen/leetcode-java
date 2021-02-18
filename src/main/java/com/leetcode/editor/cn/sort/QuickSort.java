@@ -4,7 +4,7 @@ package com.leetcode.editor.cn.sort;
  * @author earthchen
  * @date 2021/1/31
  **/
-public class QuackSort {
+public class QuickSort {
 
     public void quackSort(int[] nums, int left, int right) {
         if (left >= right) {
@@ -104,12 +104,57 @@ public class QuackSort {
         nums[j] = tmp;
     }
 
+    public void quickSort3(int[] nums, int left, int right) {
+        if (left >= right) {
+            return;
+        }
+        int l = left;
+        int r = right;
+        int v = nums[left];
+        int i = left + 1;
+        while (i <= r) {
+            if (nums[i] > v) {
+                swap(nums, i, r);
+                r--;
+            } else if (nums[i] < v) {
+                swap(nums, i, l);
+                l++;
+                i++;
+            } else {
+                i++;
+            }
+        }
+        quickSort2(nums, left, l - 1);
+        quickSort2(nums, r + 1, right);
+    }
+
+    public void quickSort2(int[] nums, int left, int right) {
+        if (left >= right) {
+            return;
+        }
+        int l = left;
+        int r = right;
+        int v = nums[left];
+        while (l < r) {
+            while (l < r && nums[r] >= v) {
+                r--;
+            }
+            while (l < r && nums[l] <= v) {
+                l++;
+            }
+            swap(nums, l, r);
+        }
+        swap(nums, l, left);
+        quickSort2(nums, left, l - 1);
+        quickSort2(nums, r + 1, right);
+    }
+
 
     public static void main(String[] args) {
-        QuackSort quackSort = new QuackSort();
+        QuickSort quickSort = new QuickSort();
         // int[] nums = new int[]{5,1, 3, 5, 2, 10, -1, 5, 4, 5};
         int[] nums = new int[]{4, 3, 1, 4, 1, 5};
-        quackSort.quackSort2(nums, 0, nums.length - 1);
+        quickSort.quackSort2(nums, 0, nums.length - 1);
         for (int num : nums) {
             System.out.println(num);
         }
