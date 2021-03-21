@@ -57,7 +57,7 @@ public class RemoveLinkedListElements {
             while (cur.next != null) {
                 if (cur.next.val == val) {
                     cur.next = cur.next.next;
-                }else {
+                } else {
                     cur = cur.next;
                 }
             }

@@ -13,31 +13,14 @@ package com.leetcode.editor.cn;
 // 输入: 1->1->2->3->3
 //输出: 1->2->3 
 // Related Topics 链表 
-// 👍 491 👎 0
+// 👍 492 👎 0
 
+import com.leetcode.editor.cn.list.ListNode;
 
 public class RemoveDuplicatesFromSortedList {
     public static void main(String[] args) {
         Solution solution = new RemoveDuplicatesFromSortedList().new Solution();
     }
-
-    class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
-
     //leetcode submit region begin(Prohibit modification and deletion)
 
     /**

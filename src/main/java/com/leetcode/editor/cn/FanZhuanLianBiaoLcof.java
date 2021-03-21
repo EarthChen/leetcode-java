@@ -22,19 +22,13 @@ package com.leetcode.editor.cn;
 // 👍 195 👎 0
 
 
+import com.leetcode.editor.cn.list.ListNode;
+
 public class FanZhuanLianBiaoLcof {
     public static void main(String[] args) {
         Solution solution = new FanZhuanLianBiaoLcof().new Solution();
     }
 
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
 
     //leetcode submit region begin(Prohibit modification and deletion)
 

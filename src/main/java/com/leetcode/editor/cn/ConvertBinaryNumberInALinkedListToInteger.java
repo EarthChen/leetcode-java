@@ -52,19 +52,13 @@ package com.leetcode.editor.cn;
 // 👍 72 👎 0
 
 
+import com.leetcode.editor.cn.list.ListNode;
+
 public class ConvertBinaryNumberInALinkedListToInteger {
     public static void main(String[] args) {
         Solution solution = new ConvertBinaryNumberInALinkedListToInteger().new Solution();
     }
 
-    class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
     //leetcode submit region begin(Prohibit modification and deletion)
 
     /**

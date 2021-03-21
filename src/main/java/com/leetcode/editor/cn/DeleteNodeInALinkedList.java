@@ -38,18 +38,11 @@ package com.leetcode.editor.cn;
 // 👍 863 👎 0
 
 
+import com.leetcode.editor.cn.list.ListNode;
+
 public class DeleteNodeInALinkedList {
     public static void main(String[] args) {
         Solution solution = new DeleteNodeInALinkedList().new Solution();
-    }
-
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)

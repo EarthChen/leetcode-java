@@ -39,7 +39,6 @@ public class ShanChuLianBiaoDeJieDianLcof {
         Solution solution = new ShanChuLianBiaoDeJieDianLcof().new Solution();
     }
 
-    }
 
     //leetcode submit region begin(Prohibit modification and deletion)
 

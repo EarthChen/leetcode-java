@@ -30,6 +30,8 @@ package com.leetcode.editor.cn;
 // 👍 95 👎 0
 
 
+import com.leetcode.editor.cn.list.ListNode;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -38,14 +40,6 @@ public class RemoveDuplicateNodeLcci {
         Solution solution = new RemoveDuplicateNodeLcci().new Solution();
     }
 
-    class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
     //leetcode submit region begin(Prohibit modification and deletion)
 
     /**

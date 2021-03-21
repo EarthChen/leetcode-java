@@ -61,28 +61,13 @@ package com.leetcode.editor.cn;
 // 👍 1046 👎 0
 
 
+import com.leetcode.editor.cn.list.ListNode;
+
 public class IntersectionOfTwoLinkedLists {
     public static void main(String[] args) {
         Solution solution = new IntersectionOfTwoLinkedLists().new Solution();
     }
 
-    class ListNode {
-        int val;
-
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
 
     //leetcode submit region begin(Prohibit modification and deletion)
 
@@ -90,7 +75,7 @@ public class IntersectionOfTwoLinkedLists {
      * Definition for singly-linked list. public class ListNode { int val; ListNode next; ListNode(int x) { val = x;
      * next = null; } }
      */
-    public class Solution {
+    class Solution {
         public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
             ListNode curA = headA;
             ListNode curB = headB;

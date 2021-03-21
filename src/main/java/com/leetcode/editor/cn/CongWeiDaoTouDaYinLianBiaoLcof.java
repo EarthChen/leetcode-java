@@ -18,6 +18,8 @@ package com.leetcode.editor.cn;
 // 👍 116 👎 0
 
 
+import com.leetcode.editor.cn.list.ListNode;
+
 import java.util.LinkedList;
 
 public class CongWeiDaoTouDaYinLianBiaoLcof {
@@ -25,14 +27,6 @@ public class CongWeiDaoTouDaYinLianBiaoLcof {
         Solution solution = new CongWeiDaoTouDaYinLianBiaoLcof().new Solution();
     }
 
-    class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
 
     //leetcode submit region begin(Prohibit modification and deletion)
 

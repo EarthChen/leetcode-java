@@ -16,19 +16,13 @@ package com.leetcode.editor.cn;
 // 👍 157 👎 0
 
 
+import com.leetcode.editor.cn.list.ListNode;
+
 public class LianBiaoZhongDaoShuDiKgeJieDianLcof {
     public static void main(String[] args) {
         Solution solution = new LianBiaoZhongDaoShuDiKgeJieDianLcof().new Solution();
     }
 
-    class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
 
     //leetcode submit region begin(Prohibit modification and deletion)
 
