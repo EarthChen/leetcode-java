@@ -39,8 +39,9 @@ public class Solution {
 
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
-        int length = solution.lengthOfLongestSubstring("au");
-        System.out.println(length);
+        System.out.println(Runtime.getRuntime().availableProcessors());
+        // Solution solution = new Solution();
+        // int length = solution.lengthOfLongestSubstring("au");
+        // System.out.println(length);
     }
 }
