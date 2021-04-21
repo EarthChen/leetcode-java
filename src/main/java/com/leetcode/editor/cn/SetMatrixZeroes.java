@@ -42,9 +42,9 @@ package com.leetcode.editor.cn;
 
 import java.util.Arrays;
 
-public class SetmatrixrixZeroes {
+public class SetMatrixZeroes {
     public static void main(String[] args) {
-        Solution solution = new SetmatrixrixZeroes().new Solution();
+        Solution solution = new SetMatrixZeroes().new Solution();
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
