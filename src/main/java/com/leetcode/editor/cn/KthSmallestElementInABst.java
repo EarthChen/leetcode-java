@@ -39,9 +39,6 @@ package com.leetcode.editor.cn;
 
 import com.leetcode.editor.cn.tree.TreeNode;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class KthSmallestElementInABst {
     public static void main(String[] args) {
         Solution solution = new KthSmallestElementInABst().new Solution();
@@ -55,20 +52,27 @@ public class KthSmallestElementInABst {
      */
     class Solution {
 
+        int n;
+        int res;
 
         public int kthSmallest(TreeNode root, int k) {
-            List<Integer> ret = new ArrayList<>();
-            inOrder(root, ret);
-            return ret.get(k-1);
+            inorder(root, k);
+            return res;
         }
 
-        private void inOrder(TreeNode root, List<Integer> ret) {
+        public void inorder(TreeNode root, int k) {
             if (root == null) {
                 return;
             }
-            inOrder(root.left, ret);
-            ret.add(root.val);
-            inOrder(root.right, ret);
+            if (n > k) {
+                return;
+            }
+            inorder(root.left, k);
+            n++;
+            if (n == k) {
+                res = root.val;
+            }
+            inorder(root.right, k);
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
