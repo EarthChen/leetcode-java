@@ -52,30 +52,28 @@ public class SuccessorLcci {
      */
     class Solution {
 
-        public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
+        private TreeNode last = null;
+        private TreeNode ans = null;
+
+        private void inorder(TreeNode root, TreeNode p) {
             if (p == null) {
-                return null;
+                return;
             }
             if (root == null) {
-                return null;
+                return;
             }
-            if (p.val >= root.val) {
-                return inorderSuccessor(root.right, p);
+            inorder(root.left, p);
+            if (last == p) {
+                ans = root;
             }
-            TreeNode left = inorderSuccessor(root.left, p);
-            if (left == null) {
-                return root;
-            }
-            return left;
-            // if (lastNode == null) {
-            // }
-            // inorderSuccessor(root.left, p);
-            // lastNode = root;
-            // if (root == p) {
-            //     return lastNode;
-            // }
-            // inorderSuccessor(root.right, p);
-            // return null;
+            last = root;
+            inorder(root.right, p);
+        }
+
+        public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
+
+            inorder(root, p);
+            return ans;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
