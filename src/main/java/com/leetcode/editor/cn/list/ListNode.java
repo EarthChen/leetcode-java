@@ -28,4 +28,15 @@ public class ListNode {
                 ", next=" + next +
                 '}';
     }
+
+
+    public static ListNode newListNode(int... vals) {
+        ListNode pre = new ListNode(0);
+        ListNode cur = pre;
+        for (int val : vals) {
+            cur.next = new ListNode(val);
+            cur = cur.next;
+        }
+        return pre.next;
+    }
 }
