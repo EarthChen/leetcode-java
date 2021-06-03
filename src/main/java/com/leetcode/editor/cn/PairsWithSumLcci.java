@@ -23,9 +23,7 @@ package com.leetcode.editor.cn;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class PairsWithSumLcci {
     public static void main(String[] args) {
@@ -38,28 +36,50 @@ public class PairsWithSumLcci {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public List<List<Integer>> pairSums(int[] nums, int target) {
+            int length = nums.length;
+            Arrays.sort(nums);
             List<List<Integer>> res = new ArrayList<>();
-            Map<Integer, Integer> map = new HashMap<>();
-            for (int num : nums) {
-                map.put(num, map.getOrDefault(num, 0) + 1);
-            }
-            for (int num1 : map.keySet()) {
-                int num2 = target - num1;
-                if (map.containsKey(num2) && map.get(num2) > 0) {
-                    int count = 0;
-                    if (num1 == num2) {
-                        count = map.get(num1) / 2;
-                    } else {
-                        count = Math.min(map.get(num1), map.get(num2));
-                    }
-                    for (int i = 0; i < count; i++) {
-                        res.add(Arrays.asList(num1, num2));
-                    }
-                    map.put(num1, 0);
-                    map.put(num2, 0);
+            int i = 0;
+            int j = length - 1;
+            while (i < j) {
+                int num1 = nums[i];
+                int num2 = nums[j];
+                int sum = num1 + num2;
+                if (sum == target) {
+                    res.add(Arrays.asList(num1, num2));
+                    i++;
+                    j--;
+                    continue;
+                }
+                if (sum > target) {
+                    j--;
+                } else {
+                    i++;
                 }
             }
             return res;
+            // List<List<Integer>> res = new ArrayList<>();
+            // Map<Integer, Integer> map = new HashMap<>();
+            // for (int num : nums) {
+            //     map.put(num, map.getOrDefault(num, 0) + 1);
+            // }
+            // for (int num1 : map.keySet()) {
+            //     int num2 = target - num1;
+            //     if (map.containsKey(num2) && map.get(num2) > 0) {
+            //         int count = 0;
+            //         if (num1 == num2) {
+            //             count = map.get(num1) / 2;
+            //         } else {
+            //             count = Math.min(map.get(num1), map.get(num2));
+            //         }
+            //         for (int i = 0; i < count; i++) {
+            //             res.add(Arrays.asList(num1, num2));
+            //         }
+            //         map.put(num1, 0);
+            //         map.put(num2, 0);
+            //     }
+            // }
+            // return res;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
