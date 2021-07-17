@@ -37,7 +37,6 @@ package com.leetcode.editor.cn;
 
 import com.leetcode.editor.cn.tree.TreeNode;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class HouseRobberIii {
@@ -53,8 +52,23 @@ public class HouseRobberIii {
      */
     class Solution {
         public int rob(TreeNode root) {
-            return rob(root, new HashMap<>());
+            // return rob(root, new HashMap<>());
+            int[] ans = robDP(root);
+            return Math.max(ans[0], ans[1]);
         }
+
+        private int[] robDP(TreeNode root) {
+            if (root == null) {
+                return new int[]{0, 0};
+            }
+            int[] ans = new int[2];
+            int[] leftDP = robDP(root.left);
+            int[] rightDP = robDP(root.right);
+            ans[0] = Math.max(leftDP[1], leftDP[0]) + Math.max(rightDP[1], rightDP[0]);
+            ans[1] = leftDP[0] + rightDP[0] + root.val;
+            return ans;
+        }
+
 
         private int rob(TreeNode root, Map<TreeNode, Integer> map) {
             if (root == null) {
