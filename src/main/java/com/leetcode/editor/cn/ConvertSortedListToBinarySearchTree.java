@@ -23,7 +23,6 @@ package com.leetcode.editor.cn;
 import com.leetcode.editor.cn.list.ListNode;
 import com.leetcode.editor.cn.tree.TreeNode;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ConvertSortedListToBinarySearchTree {
@@ -47,15 +46,15 @@ public class ConvertSortedListToBinarySearchTree {
      * this.left = left; this.right = right; } }
      */
     class Solution {
-        public TreeNode sortedListToBST(ListNode head) {
-            List<Integer> valList = new ArrayList<>();
-            ListNode cur = head;
-            while (cur != null) {
-                valList.add(cur.val);
-                cur = cur.next;
-            }
-            return build(valList, 0, valList.size() - 1);
-        }
+        // public TreeNode sortedListToBST(ListNode head) {
+        //     List<Integer> valList = new ArrayList<>();
+        //     ListNode cur = head;
+        //     while (cur != null) {
+        //         valList.add(cur.val);
+        //         cur = cur.next;
+        //     }
+        //     return build(valList, 0, valList.size() - 1);
+        // }
 
         private TreeNode build(List<Integer> nums, int i, int j) {
             if (i > j) {
@@ -66,6 +65,41 @@ public class ConvertSortedListToBinarySearchTree {
             TreeNode root = new TreeNode(midVal);
             root.left = build(nums, i, mid - 1);
             root.right = build(nums, mid + 1, j);
+            return root;
+        }
+
+        ListNode lhead;
+
+        public TreeNode sortedListToBST(ListNode head) {
+            lhead = head;
+            int length = getListLength(head);
+            return inOrderMakeBST(head, 0, length - 1);
+        }
+
+        //获得链表长度
+        public int getListLength(ListNode head) {
+            int length = 0;
+            while (head != null) {
+                length++;
+                head = head.next;
+            }
+            return length;
+        }
+
+        //分治+递归中序生成平衡二叉搜索树
+        public TreeNode inOrderMakeBST(ListNode head, int left, int right) {
+            //递归终止条件
+            if (left > right) {
+                return null;
+            }
+            //mid = (left + right + 1)/2也可以，只是生成的树的叶子位置不同
+            int mid = left + (right - left) / 2;
+            TreeNode root = new TreeNode(0);
+            //分治递归中序遍历生成左右子树
+            root.left = inOrderMakeBST(lhead, left, mid - 1);
+            root.val = lhead.val;
+            lhead = lhead.next;
+            root.right = inOrderMakeBST(lhead, mid + 1, right);
             return root;
         }
     }
