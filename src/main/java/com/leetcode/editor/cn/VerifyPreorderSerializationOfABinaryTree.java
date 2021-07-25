@@ -38,8 +38,6 @@ package com.leetcode.editor.cn;
 // 👍 323 👎 0
 
 
-import java.util.LinkedList;
-
 public class VerifyPreorderSerializationOfABinaryTree {
     public static void main(String[] args) {
         Solution solution = new VerifyPreorderSerializationOfABinaryTree().new Solution();
@@ -53,21 +51,38 @@ public class VerifyPreorderSerializationOfABinaryTree {
         public static final String NULL_VAL = "#";
 
         public boolean isValidSerialization(String preorder) {
-            LinkedList<String> stack = new LinkedList<>();
-            for (String s : preorder.split(SEPARATOR)) {
-                stack.push(s);
-                while (stack.size() >= 3
-                        && stack.get(0).equals(NULL_VAL)
-                        && stack.get(1).equals(NULL_VAL)
-                        && !stack.get(2).equals(NULL_VAL)) {
-                    stack.pop();
-                    stack.pop();
-                    stack.pop();
-                    stack.push(NULL_VAL);
+            int diff = 1;
+            for(String s : preorder.split(SEPARATOR)){
+                diff--;
+                // 每加入一个节点 都要先减去一个入度   若该节点是非空节点 还要再加上两个出度
+                // 遍历完之前，出度是大于等于入度的    1个出度认为提供一个挂载点  1个入度认为消耗一个挂载点
+                // 若小于等于 消耗的挂载点 大于等于 提供的挂载点  不可能再继续遍历挂载剩下的节点了
+                if (diff < 0){
+                    return false;
+                }
+                if(!s.equals(NULL_VAL)){
+                    diff += 2;
                 }
             }
-            return stack.size() == 1 && stack.pop().equals(NULL_VAL);
+            return diff == 0;
         }
+
+        // public boolean isValidSerialization(String preorder) {
+        //     LinkedList<String> stack = new LinkedList<>();
+        //     for (String s : preorder.split(SEPARATOR)) {
+        //         stack.push(s);
+        //         while (stack.size() >= 3
+        //                 && stack.get(0).equals(NULL_VAL)
+        //                 && stack.get(1).equals(NULL_VAL)
+        //                 && !stack.get(2).equals(NULL_VAL)) {
+        //             stack.pop();
+        //             stack.pop();
+        //             stack.pop();
+        //             stack.push(NULL_VAL);
+        //         }
+        //     }
+        //     return stack.size() == 1 && stack.pop().equals(NULL_VAL);
+        // }
     }
 //leetcode submit region end(Prohibit modification and deletion)
 
