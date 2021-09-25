@@ -65,10 +65,10 @@ import java.util.Map;
 public class OrIXps {
     public static void main(String[] args) {
 
-        LRUCache lruCache = new LRUCache(2);
-        lruCache.put(1, 1);
-        lruCache.put(2, 2);
-        lruCache.get(1);
+        // LRUCache lruCache = new LRUCache(2);
+        // lruCache.put(1, 1);
+        // lruCache.put(2, 2);
+        // lruCache.get(1);
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
