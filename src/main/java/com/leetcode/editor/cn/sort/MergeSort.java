@@ -13,7 +13,7 @@ public class MergeSort {
         if (left >= right) {
             return;
         }
-        int mid = (right + left) / 2;
+        int mid = left + (right - left) / 2;
         mergeSort(nums, tmpNums, left, mid);
         mergeSort(nums, tmpNums, mid + 1, right);
         merge(nums, tmpNums, left, mid + 1, right);

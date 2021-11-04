@@ -154,9 +154,49 @@ public class QuickSort {
         QuickSort quickSort = new QuickSort();
         // int[] nums = new int[]{5,1, 3, 5, 2, 10, -1, 5, 4, 5};
         int[] nums = new int[]{4, 3, 1, 4, 1, 5};
-        quickSort.quackSort2(nums, 0, nums.length - 1);
+        qk(nums);
+        // quickSort.quackSort2(nums, 0, nums.length - 1);
         for (int num : nums) {
             System.out.println(num);
         }
     }
+
+
+    private static void qk(int[] arr) {
+        qk(arr, 0, arr.length - 1);
+    }
+
+    private static void swap2(int[] arr, int i, int j) {
+        int tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
+    }
+
+    private static void qk(int[] arr, int left, int right) {
+        if (left >= right) {
+            return;
+        }
+        int part = arr[left];
+        int lp = left;
+        int rp = right;
+        int i = left;
+        while (i < rp) {
+            if (arr[i] == part) {
+                i++;
+                continue;
+            }
+            if (arr[i] < part) {
+                swap2(arr, lp + 1, i);
+                lp++;
+                i++;
+            } else {
+                swap2(arr, rp, i);
+                rp--;
+            }
+        }
+        swap2(arr, lp, left);
+        qk(arr, left, lp);
+        qk(arr, rp, right);
+    }
 }
+
