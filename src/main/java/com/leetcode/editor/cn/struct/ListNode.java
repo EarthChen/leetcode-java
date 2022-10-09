@@ -15,4 +15,23 @@ public class ListNode {
         this.val = val;
         this.next = next;
     }
+
+
+    public static ListNode newListNode(int... vals) {
+        ListNode pre = new ListNode();
+        ListNode cur = pre;
+        for (int val : vals) {
+            cur.next = new ListNode(val);
+            cur = cur.next;
+        }
+        return pre.next;
+    }
+
+    @Override
+    public String toString() {
+        return "ListNode{" +
+                "val=" + val +
+                ", next=" + next +
+                '}';
+    }
 }
