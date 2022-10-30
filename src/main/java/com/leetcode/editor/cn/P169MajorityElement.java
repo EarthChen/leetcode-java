@@ -35,8 +35,6 @@
 
 package com.leetcode.editor.cn;
 
-import java.util.Arrays;
-
 //Java：多数元素
 public class P169MajorityElement {
     public static void main(String[] args) {
@@ -47,8 +45,22 @@ public class P169MajorityElement {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int majorityElement(int[] nums) {
-            Arrays.sort(nums);
-            return nums[nums.length / 2];
+            // Arrays.sort(nums);
+            // return nums[nums.length / 2];
+
+            int count = 1;
+            int ret = nums[0];
+            for (int i = 1; i < nums.length; i++) {
+                if (count == 0) {
+                    ret = nums[i];
+                }
+                if (nums[i] == ret) {
+                    count++;
+                } else {
+                    count--;
+                }
+            }
+            return ret;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
