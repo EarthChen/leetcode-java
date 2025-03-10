@@ -48,21 +48,25 @@ public class PMergeIntervals {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int[][] merge(int[][] intervals) {
-            if (intervals.length == 0) {
-                return new int[0][2];
-            }
-            Arrays.sort(intervals, Comparator.comparingInt(v -> v[0]));
+
             List<int[]> merged = new ArrayList<>();
-            for (int[] interval : intervals) {
-                int L = interval[0];
-                int R = interval[1];
-                if (merged.size() == 0 || merged.get(merged.size() - 1)[1] < L) {
-                    merged.add(new int[]{L, R});
+            Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
+            int length = intervals.length;
+            for (int i = 0; i < length; i++) {
+                if (merged.isEmpty()) {
+                    merged.add(intervals[i]);
+                    continue;
+                }
+                int[] last = merged.remove(merged.size() - 1);
+                int[] cur = intervals[i];
+                if (cur[0] > last[1]) {
+                    merged.add(last);
+                    merged.add(cur);
                 } else {
-                    merged.get(merged.size() - 1)[1] = Math.max(merged.get(merged.size() - 1)[1], R);
+                    merged.add(new int[]{last[0], Math.max(cur[1], last[1])});
                 }
             }
-            return merged.toArray(new int[merged.size()][]);
+            return merged.toArray(new int[0][]);
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
